@@ -21,7 +21,7 @@
     float: left;    
 }
 .grouping-header, .group-indicator, .group-draggable-header, .sprint-grid table thead th, .pagination, .grid-header {    
-	background-image: url('images/highlight.png');
+	background-image: url('../Images/highlight.png');
 }
 
 .grouping-header{
@@ -69,7 +69,7 @@
 }
 
 .group-drop-button  span {
-    background: url('images/grid-icons.png') no-repeat transparent;    
+    background: url('../Images/grid-icons.png') no-repeat transparent;    
     background-position: -6px -193px;
     margin: 0 2px 0 4px;
     width: 16px;
@@ -97,7 +97,7 @@
     color: #2e2e2e;     
 }    
 .group-draggable-header i {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -223px;
     display: inline-block;
     width: 16px;
@@ -114,7 +114,7 @@
 }
 
 .group-placeholder {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -12px -277px;
     width: 6px;
     height: 25px;    
@@ -126,13 +126,13 @@
 }
 
 .asc-group-sort {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -18px;
     width: 16px;
     height: 16px;
 }
 .desc-group-sort {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -48px;
     width: 16px;
     height: 16px;
@@ -249,7 +249,7 @@
 
 .minus,.minus-all {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -164px;
     width: 16px;
     height: 16px;
@@ -257,7 +257,7 @@
 }
 .plus,.plus-all {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -131px;
     width: 16px;
     height: 16px;
@@ -317,11 +317,11 @@
     text-indent: 0;
 }
 .loading{
-     background-image: url("images/loading.gif");
+     background-image: url("../Images/loading.gif");
 }
 
 .refresh{
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -310px;
 }
 .pagination {
@@ -333,7 +333,7 @@
 }*/
 
 span.asc-sort {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -76px;
     display: inline-block;
     width: 16px;
@@ -346,7 +346,7 @@ span.asc-sort {
     vertical-align: middle;
 }
 span.desc-sort {
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -6px -102px;
     display: inline-block;
     width: 16px;
@@ -361,7 +361,7 @@ span.desc-sort {
 .grid-pager-button-disabled, .grid-pager-button {
     display: block;    
     float: left;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -2px -341px;
     width: 25px;
     height: 25px;
@@ -380,7 +380,7 @@ a.grid-pager-button:hover{
 }
 .grid-pager-next {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -12px -426px;
     width: 8px;
     height: 10px;
@@ -392,7 +392,7 @@ a.grid-pager-button:hover{
 }
 .grid-pager-last {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -12px -563px;
     width: 8px;
     height: 10px;
@@ -405,7 +405,7 @@ a.grid-pager-button:hover{
 }
 .grid-pager-first {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -12px -684px;
     width: 8px;
     height: 10px;
@@ -417,7 +417,7 @@ a.grid-pager-button:hover{
 }
 .grid-pager-prev {
     display: block;
-    background: url('images/grid-icons.png') no-repeat transparent;
+    background: url('../Images/grid-icons.png') no-repeat transparent;
     background-position: -12px -528px;
     width: 8px;
     height: 10px;

@@ -71,20 +71,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="content\Scripts\sprint.grid\images\grid-icons.png" />
-    <Content Include="content\Scripts\sprint.grid\images\highlight.png" />
-    <Content Include="content\Scripts\sprint.grid\images\loading.gif" />
-    <Content Include="content\Scripts\sprint.grid\sprint.grid.css" />
-    <Content Include="content\Scripts\sprint.grid\sprint.grid.js" />
-    <Content Include="content\Scripts\sprint.grid\sprint.grid.min.css">
+    <Content Include="content\Content\sprint.grid.min.css">
       <DependentUpon>sprint.grid.css</DependentUpon>
     </Content>
+    <Content Include="content\Images\grid-icons.png" />
+    <Content Include="content\Images\highlight.png" />
+    <Content Include="content\Images\loading.gif" />
+    <Content Include="content\Content\sprint.grid.css" />
+    <Content Include="content\Scripts\sprint.grid\sprint.grid.js" />
     <Content Include="content\Scripts\sprint.grid\sprint.grid.min.js">
       <DependentUpon>sprint.grid.js</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nuget-package\SprintGridLib.nuspec" />
+    <None Include="nuget-package\SprintGridLib.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
