@@ -115,4 +115,6 @@ $(document).ready(function () {
 });
 ```
 
-<iframe src="http://sprint.tfs.intravision.ru/SprintGrid#grouping"></iframe>
+**Result**
+
+![Grid](/Images/groupgrid.png "Grid")

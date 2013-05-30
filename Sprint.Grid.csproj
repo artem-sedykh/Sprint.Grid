@@ -82,12 +82,14 @@
     <Content Include="content\Scripts\sprint.grid\sprint.grid.min.js">
       <DependentUpon>sprint.grid.js</DependentUpon>
     </Content>
+    <Content Include="Images\groupgrid.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="nuget-package\SprintGridLib.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
