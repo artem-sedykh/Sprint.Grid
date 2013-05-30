@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{885E9BC7-F0F2-4F85-81E8-B86A1AFB07BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sprint</RootNamespace>
+    <AssemblyName>Sprint.Grid</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\LinqKit.1.0\lib\35\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Grid\IActionGridView.cs" />
+    <Compile Include="Grid\IColumnBuilder.cs" />
+    <Compile Include="Grid\IGridColumn.cs" />
+    <Compile Include="Grid\IGridColumnConfiguration.cs" />
+    <Compile Include="Grid\IGridGroupOptions.cs" />
+    <Compile Include="Grid\IGridModel.cs" />
+    <Compile Include="Grid\IGridOptions.cs" />
+    <Compile Include="Grid\IGridRender.cs" />
+    <Compile Include="Grid\Impl\ActionGridView.cs" />
+    <Compile Include="Grid\Impl\ColumnBuilder.cs" />
+    <Compile Include="Grid\Impl\DefaultPager.cs" />
+    <Compile Include="Grid\Impl\GridColumn.cs" />
+    <Compile Include="Grid\Impl\GridGroupOptions.cs" />
+    <Compile Include="Grid\Impl\GridModel.cs" />
+    <Compile Include="Grid\Impl\GridModelHelper.cs" />
+    <Compile Include="Grid\Impl\GridOptions.cs" />
+    <Compile Include="Grid\Impl\GridPagedListRenderOptions.cs" />
+    <Compile Include="Grid\Impl\GridQueryableExtensions.cs" />
+    <Compile Include="Grid\Impl\GridRender.cs" />
+    <Compile Include="Grid\Impl\GridRenderOptions.cs" />
+    <Compile Include="Grid\Impl\GroupingItem.cs" />
+    <Compile Include="Grid\Impl\HtmlTableGridRenderer.cs" />
+    <Compile Include="Grid\Impl\ModelHelper.cs" />
+    <Compile Include="Grid\Impl\PagedListModel.cs" />
+    <Compile Include="Grid\IPagedList.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\Scripts\sprint.grid\images\grid-icons.png" />
+    <Content Include="content\Scripts\sprint.grid\images\highlight.png" />
+    <Content Include="content\Scripts\sprint.grid\images\loading.gif" />
+    <Content Include="content\Scripts\sprint.grid\sprint.grid.css" />
+    <Content Include="content\Scripts\sprint.grid\sprint.grid.js" />
+    <Content Include="content\Scripts\sprint.grid\sprint.grid.min.css">
+      <DependentUpon>sprint.grid.css</DependentUpon>
+    </Content>
+    <Content Include="content\Scripts\sprint.grid\sprint.grid.min.js">
+      <DependentUpon>sprint.grid.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="nuget-package\SprintGridLib.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release "$(DevEnvDir)..\Tools\nuget" pack "$(SolutionDir)nuget-package\SprintGridLib.nuspec" /OutputDirectory "$(SolutionDir)nuget-package"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
