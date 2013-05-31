@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>        
+        <meta charset='utf-8' />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />              
+        @Styles.Render("~/bundles/site")
+        @RenderSection("css", false)
+        <link rel="stylesheet" type="text/css" href="~/Content/print.css" media="print" />        
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css' />   
+        <title>@ViewBag.Title</title>
+    </head>   
+    <body>
+        <header>
+            <div class="inner">
+                <h1>Sprint.Grid</h1>
+                <h2>Asp.Net MVC4 Grid</h2>
+                <a href="https://github.com/artem-sedykh/Sprint.Grid" class="button"><small>View project on</small>GitHub</a>
+            </div>
+        </header>
+        <div class="bs-docs-social">
+            <div class="container">
+                <ul class="bs-docs-social-buttons">
+                    <li>                        
+                        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=artem-sedykh&amp;repo=Sprint.Grid&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                    </li>
+                    <li>
+                        <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=artem-sedykh&amp;repo=Sprint.Grid&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+                    </li>                          
+                </ul>
+            </div>
+        </div>
+        <div id="content-wrapper">
+            <div class="inner clearfix">
+                <section id="main-content">
+                    @RenderBody()
+                </section>
+                <aside id="sidebar">
+                    <a href="https://github.com/artem-sedykh/Sprint.Grid/zipball/master" class="button">
+                        <small>Download</small>
+                        .zip file
+                    </a>
+                    <a href="https://github.com/artem-sedykh/Sprint.Grid/tarball/master" class="button">
+                        <small>Download</small>
+                        .tar.gz file
+                    </a>  
+                    <a href="http://nuget.org/packages/Sprint.Grid/" class="button">
+                        <small>View package on</small>nuget
+                    </a>                 
+                </aside>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/jquery")        
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/javascript")
+        @Scripts.Render("~/bundles/prettify")
+        @RenderSection("scripts", false)
+  </body>
+</html>

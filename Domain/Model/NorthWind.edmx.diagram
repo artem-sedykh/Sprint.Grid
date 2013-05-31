@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d784f144e104be1ba14b0e1604a601e" Name="Diagram1">
+        <EntityTypeShape EntityType="Domain.Model.Category" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Customer" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Employee" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.OrderDetail" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Product" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.SavedFilters" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Shipper" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.Supplier" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Domain.Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="Domain.Model.CategoryProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.CustomerOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.EmployeeOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.OrderDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.ShipperOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.ProductOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="Domain.Model.SupplierProducts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
