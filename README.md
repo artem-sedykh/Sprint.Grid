@@ -8,6 +8,4 @@ Sprint.Grid is a library that allows you to easily display data.
 
 Install ["Sprint.Grid"](http://nuget.org/packages/Sprint.Grid/) via [NuGet](http://nuget.org).
 
-## Example
-
-["Demo"](http://sprintgrid.tfs.intravision.ru/)
+## [Example](http://sprintgrid.tfs.intravision.ru/)
