@@ -10,6 +10,7 @@
     <description>Asp.Net MVC4 Grid</description>
     <language>en-US</language>
     <tags>ASP.NET Mvc,Mvc4, Grid, Sprint</tags>
+    <releaseNotes>Bug fixes</releaseNotes>
     <dependencies>
       <dependency id="LinqKit" version="1.0" />      
     </dependencies>

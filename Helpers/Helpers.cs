@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Sprint.Helpers
+﻿namespace Sprint.Helpers
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +8,7 @@ namespace Sprint.Helpers
     using System.Reflection.Emit;
     using System.Text;
     using System.Threading;
+    using System.ComponentModel;
 
     internal static class Helpers
     {
@@ -33,10 +32,10 @@ namespace Sprint.Helpers
         }
 
         /// <summary>
-        /// Создание нового типа.
+        /// Create new dynamic Type.
         /// </summary>
-        /// <param name="properties">Словарь имя свойства, тип</param>
-        /// <returns>Тип обекта.</returns>
+        /// <param name="properties">Dictionary, PropertyName/Type.</param>
+        /// <returns>Created type.</returns>
         internal static Type GetDynamicType(Dictionary<string, Type> properties)
         {
             if (null == properties)
@@ -96,10 +95,10 @@ namespace Sprint.Helpers
         }
 
         /// <summary>
-        /// Создание нового типа.
+        ///  Create new dynamic Type.
         /// </summary>
-        /// <param name="properties">коллекция PropertyInfo</param>
-        /// <returns>Тип обекта.</returns>
+        /// <param name="properties">PropertyInfo collection.</param>
+        /// <returns>Created type.</returns>
         internal static Type GetDynamicType(IEnumerable<PropertyInfo> properties)
         {
             return GetDynamicType(properties.Where(p => p != null).ToDictionary(p => p.Name, p => p.PropertyType));

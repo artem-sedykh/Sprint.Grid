@@ -26,7 +26,6 @@
 
         //#endregion
 
-
         this.gridOptionsSelector = '.js-' + key + '-options';
 
         this.paginateSelector = '.js-' + key + '-page-link';
@@ -300,84 +299,90 @@
         },
 
         initGrouping: function () {
+
             var $groupcolumns = $(this.groupColumnSelector);
             var $groupHeader = $(this.groupHeaderSelector);
             var context = this;
             var containerSelector = '#' + context.gridKey;
-
-            $groupHeader.sortable({
-                items: context.groupIndicatorSelector,
-                appendTo: containerSelector,
-                placeholder: "group-placeholder",
-                distance: 5,
-                tolerance: "pointer",
-                forcePlaceholderSize: true,
-                update: function (event, ui) {
-                    var $self = $(this);
-                    var groupColumnClass = 'js-' + context.gridKey + '-group-column';
-                    if (ui.item.hasClass(groupColumnClass)) {
-                        var groupIndicator = '<div data-key="' + ui.item.attr('data-key') + '" class="group-indicator"><a class="group-sort"><span class="grid-icon asc-group-sort "></span>' + ui.item.attr('data-title') + '</a><a class="group-drop-button"><span class="grid-icon"></span></a></div>';
-                        ui.item.replaceWith(groupIndicator);
-                    }
-
-                    $self.children().each(function () {
-                        var $item = $(this);
-                        var index = $item.index();
-                        var key = $item.find('[data-key]:first').attr('data-key') || $item.attr('data-key');
-                        if (key) {
-                            if (!context.gridOptions.ColOpt[key])
-                                context.gridOptions.ColOpt[key] = {};
-
-                            context.gridOptions.ColOpt[key].go = index;
+            if ($.sortable && $.draggable) {
+                $groupHeader.sortable({
+                    items: context.groupIndicatorSelector,
+                    appendTo: containerSelector,
+                    placeholder: "group-placeholder",
+                    distance: 5,
+                    tolerance: "pointer",
+                    forcePlaceholderSize: true,
+                    update: function (event, ui) {
+                        var $self = $(this);
+                        var groupColumnClass = 'js-' + context.gridKey + '-group-column';
+                        if (ui.item.hasClass(groupColumnClass)) {
+                            var groupIndicator = '<div data-key="' + ui.item.attr('data-key') + '" class="group-indicator"><a class="group-sort"><span class="grid-icon asc-group-sort "></span>' + ui.item.attr('data-title') + '</a><a class="group-drop-button"><span class="grid-icon"></span></a></div>';
+                            ui.item.replaceWith(groupIndicator);
                         }
 
-                    });
-                    context.reInitColumnOrder('go', context.gridOptions.ColOpt);
+                        $self.children().each(function () {
+                            var $item = $(this);
+                            var index = $item.index();
+                            var key = $item.find('[data-key]:first').attr('data-key') || $item.attr('data-key');
+                            if (key) {
+                                if (!context.gridOptions.ColOpt[key])
+                                    context.gridOptions.ColOpt[key] = {};
 
-                    context.refresh();
-                },
-                helper: function (event, item) {
-                    var $item = $(item);
-                    var name = $item.find('a.group-sort').text();
-                    return '<div class="group-draggable-header"><i></i>' + name + '</div>';
-                },
-                stop: function () {
-                    var $self = $(this);
-                    var $emptyText = $self.find('.grouping-header-empty');
-                    if ($emptyText && $self.find('.default-group-indicator'))
-                        $emptyText.hide();
-                },
-                over: function (event, ui) {
-                    var $self = $(this);
-                    var $emptyText = $self.find('.grouping-header-empty');
-                    if ($emptyText)
-                        $emptyText.hide();
+                                context.gridOptions.ColOpt[key].go = index;
+                            }
 
-                    if (ui.helper) {
-                        ui.helper.css({ width: 'auto', height: 'auto' });
-                        ui.helper.addClass('add');
+                        });
+                        context.reInitColumnOrder('go', context.gridOptions.ColOpt);
+
+                        context.refresh();
+                    },
+                    helper: function (event, item) {
+                        var $item = $(item);
+                        var name = $item.find('a.group-sort').text();
+                        return '<div class="group-draggable-header"><i></i>' + name + '</div>';
+                    },
+                    stop: function () {
+                        var $self = $(this);
+                        var $emptyText = $self.find('.grouping-header-empty');
+                        if ($emptyText && $self.find('.default-group-indicator'))
+                            $emptyText.hide();
+                    },
+                    over: function (event, ui) {
+                        var $self = $(this);
+                        var $emptyText = $self.find('.grouping-header-empty');
+                        if ($emptyText)
+                            $emptyText.hide();
+
+                        if (ui.helper) {
+                            ui.helper.css({ width: 'auto', height: 'auto' });
+                            ui.helper.addClass('add');
+                        }
+                    },
+                    out: function (event, ui) {
+                        var $self = $(this);
+                        var $emptyText = $self.find('.grouping-header-empty');
+                        if ($emptyText)
+                            $emptyText.show();
+                        if (ui.helper) {
+                            ui.helper.removeClass('add');
+                        }
                     }
-                },
-                out: function (event, ui) {
-                    var $self = $(this);
-                    var $emptyText = $self.find('.grouping-header-empty');
-                    if ($emptyText)
-                        $emptyText.show();
-                    if (ui.helper) {
-                        ui.helper.removeClass('add');
-                    }
-                }
-            }).disableSelection();
+                }).disableSelection();
 
-            $groupcolumns.draggable({
-                appendTo: containerSelector,
-                connectToSortable: $groupHeader,
-                helper: function () {
-                    var $item = $(this);
-                    var name = $item.attr('data-title');
-                    return '<div class="group-draggable-header"><i></i>' + name + '</div>';
+                $groupcolumns.draggable({
+                    appendTo: containerSelector,
+                    connectToSortable: $groupHeader,
+                    helper: function () {
+                        var $item = $(this);
+                        var name = $item.attr('data-title');
+                        return '<div class="group-draggable-header"><i></i>' + name + '</div>';
+                    }
+                }).disableSelection();
+            } else {
+                if ($groupcolumns.length > 0 || $groupHeader.length > 0) {
+                    throw "Include jQuery UI to work with the group, required sortable and draggable.";
                 }
-            }).disableSelection();
+            }
         },
 
         refresh: function (options, success, complete) {
