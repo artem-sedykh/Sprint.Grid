@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Sprint.Grid
+﻿namespace Sprint.Grid
 {
     using System;
     using System.Linq.Expressions;
     using System.Web.Helpers;
     using System.Web.Mvc;
+    using System.Collections.Generic;
 
     public interface IGridColumn
     {

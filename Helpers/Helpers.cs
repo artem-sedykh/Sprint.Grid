@@ -108,6 +108,7 @@
         {
             var result = new T?();
             var s = target != null ? target.ToString() : string.Empty;
+
             if (!string.IsNullOrEmpty(s) && s.Trim().Length > 0)
             {
                 var conv = TypeDescriptor.GetConverter(typeof(T));

@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Sprint.Grid
+﻿namespace Sprint.Grid
 {
     using System;
     using System.Linq;        
     using Impl;
     using System.Web.Mvc;
+    using System.Collections.Generic;
 
     public interface IGridModel<TModel> where TModel : class
     {

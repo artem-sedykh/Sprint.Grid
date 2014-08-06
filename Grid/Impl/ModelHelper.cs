@@ -11,8 +11,8 @@
             // We allow a property to be bound if its both in the include list AND not in the exclude list.
             // An empty include list implies all properties are allowed.
             // An empty exclude list implies no properties are disallowed.
-            bool includeProperty = (includeProperties == null) || (includeProperties.Length == 0) || includeProperties.Contains(propertyName, StringComparer.OrdinalIgnoreCase);
-            bool excludeProperty = (excludeProperties != null) && excludeProperties.Contains(propertyName, StringComparer.OrdinalIgnoreCase);
+            var includeProperty = (includeProperties == null) || (includeProperties.Length == 0) || includeProperties.Contains(propertyName, StringComparer.OrdinalIgnoreCase);
+            var excludeProperty = (excludeProperties != null) && excludeProperties.Contains(propertyName, StringComparer.OrdinalIgnoreCase);
             return includeProperty && !excludeProperty;
         }
 

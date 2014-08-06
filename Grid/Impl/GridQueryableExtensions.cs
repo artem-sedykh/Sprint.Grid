@@ -1,6 +1,4 @@
-﻿using System.Web.Mvc;
-
-namespace Sprint.Grid.Impl
+﻿namespace Sprint.Grid.Impl
 {
     using Helpers;
     using System.Collections.Generic;
@@ -10,6 +8,7 @@ namespace Sprint.Grid.Impl
     using System;
     using System.Linq;    
     using System.Linq.Expressions;
+    using System.Web.Mvc;
 
     public static class GridQueryableExtensions
     {
@@ -28,9 +27,7 @@ namespace Sprint.Grid.Impl
             {
                 var key = String.Format("Key{0}", i);
                 dynamicProperies[key] = groupFields[i].ReturnType;
-            }
-            //TODO:Написать свой велосипед для создания динамических классов с использованием Emit
-            //Тип ключа 
+            }            
 
             var keyType = Helpers.GetDynamicType(dynamicProperies);
 

@@ -1,13 +1,12 @@
-﻿using System.Text;
-
-namespace Sprint.Grid.Impl
+﻿namespace Sprint.Grid.Impl
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;    
+    using System.Linq;
     using System.Web.Helpers;
-    using System.Web.Mvc;        
+    using System.Web.Mvc;
+    using System.Text;
 
     public class HtmlTableGridRenderer<TModel>:GridRender<TModel> where TModel:class
     {        
