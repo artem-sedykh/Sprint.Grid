@@ -7,5 +7,7 @@
     public interface IColumnBuilder<TModel> : IEnumerable<KeyValuePair<string, IGridColumn<TModel>>>
     {
         IGridColumnConfiguration<TModel> For(Func<TModel, HtmlHelper, object> property, string key);
+
+        IGridColumnConfiguration<TModel> For(Func<TModel, object> property, string key);
     }
 }

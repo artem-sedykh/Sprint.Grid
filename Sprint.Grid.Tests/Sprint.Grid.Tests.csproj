@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="HelpersTests.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerGridModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

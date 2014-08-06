@@ -1,4 +1,7 @@
-﻿namespace Sprint.Grid.Impl
+﻿using System.Linq.Expressions;
+using LinqKit;
+
+namespace Sprint.Grid.Impl
 {
     using System;
     using System.Collections;
@@ -19,6 +22,17 @@
         public IGridColumnConfiguration<TModel> For(Func<TModel, HtmlHelper, object> property, string key)
         {
             var column = new GridColumn<TModel>(property, _index++);
+
+            _columns.Add(key, column);
+
+            return column;
+        }
+
+        public IGridColumnConfiguration<TModel> For(Func<TModel, object> property, string key)
+        {
+            Func<TModel, HtmlHelper, object> prop = (m, html) => property != null ? property(m) : null;
+
+            var column = new GridColumn<TModel>(prop, _index++);
 
             _columns.Add(key, column);
 
