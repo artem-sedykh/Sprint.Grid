@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprint.Grid", "Sprint.Grid.csproj", "{885E9BC7-F0F2-4F85-81E8-B86A1AFB07BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprint.Grid.Tests", "Sprint.Grid.Tests\Sprint.Grid.Tests.csproj", "{6B0A2C3E-DA35-4787-BB04-3D36376F1792}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{885E9BC7-F0F2-4F85-81E8-B86A1AFB07BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{885E9BC7-F0F2-4F85-81E8-B86A1AFB07BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{885E9BC7-F0F2-4F85-81E8-B86A1AFB07BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
