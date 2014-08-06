@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
 [assembly: Guid("2c4c167d-2fb8-437b-9fbb-6b05a10407c1")]
-
+[assembly: InternalsVisibleTo("Sprint.Grid.Tests")]
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
 //      Основной номер версии
