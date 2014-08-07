@@ -92,6 +92,9 @@
     <Content Include="Images\groupgrid.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="content\Scripts\sprint.grid\sprint.grid.min.js.map">
+      <DependentUpon>sprint.grid.min.js</DependentUpon>
+    </None>
     <None Include="nuget-package\SprintGridLib.nuspec">
       <SubType>Designer</SubType>
     </None>

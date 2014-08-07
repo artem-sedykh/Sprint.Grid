@@ -51,7 +51,7 @@
     SprintGrid.prototype = {
         constructor: SprintGrid,
 
-        version: '1.0.1.1',
+        version: '1.1.1.1',
 
         options: {},
 
@@ -468,7 +468,17 @@
                     tuples[i][1][columnProperty] = index++;
                 }
             }
+        },
+
+        //#region client functions
+
+        client_refresh: function () {
+
+            this.refresh();
+
         }
+
+        //#endregion
 
     };
 
@@ -510,6 +520,10 @@
 
             if (!data) {
                 $body.data(gridKey, new SprintGrid(gridKey, this, options));
+            }
+
+            if (typeof option === 'string') {
+                data['client_' + option]();
             }
         });
     };
