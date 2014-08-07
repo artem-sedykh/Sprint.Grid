@@ -7,23 +7,7 @@ namespace Sprint.Grid.Tests
 {
     [TestClass]
     public class HelperTests
-    {
-        [TestMethod]
-        public void GetDynamicTypeTest()
-        {
-            var propertyes = new Dictionary<string, Type>();
-
-            propertyes["Id"] = typeof(int);
-            propertyes["Name"] = typeof(string);
-            propertyes["Keys"] = typeof(IDictionary<string, string>);
-
-            var type = Helpers.Helpers.GetDynamicType(propertyes);
-
-            var typeProperties = type.GetProperties().ToDictionary(p => p.Name, p => p.PropertyType);
-
-            Assert.IsFalse(propertyes.Any(x => typeProperties[x.Key] != x.Value));
-        }
-
+    {       
         [TestMethod]
         public void ToNullable()
         {

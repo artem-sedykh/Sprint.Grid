@@ -1,7 +1,14 @@
-﻿namespace Sprint.Grid.Tests.Models
+﻿using System.Collections.Generic;
+
+namespace Sprint.Grid.Tests.Models
 {
     public class Customer
     {
+        public Customer()
+        {
+            Order = new HashSet<Order>();
+        }
+
         public int ID { get; set; }
 
         public string Code { get; set; }
@@ -25,5 +32,7 @@
         public string Phone { get; set; }
 
         public string Fax { get; set; }
+
+        public ICollection<Order> Order { get; set; }
     }
 }

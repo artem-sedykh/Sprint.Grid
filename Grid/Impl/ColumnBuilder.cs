@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using LinqKit;
-
-namespace Sprint.Grid.Impl
+﻿namespace Sprint.Grid.Impl
 {
     using System;
     using System.Collections;

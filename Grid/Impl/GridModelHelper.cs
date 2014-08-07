@@ -20,9 +20,9 @@
 
             foreach (var column in visibleColumns.Where(x => x.Value.SortDirection.HasValue).OrderBy(x => x.Value.SortOrder))
                 column.Value.SortOrder = sortIndex++;
-
+           
             foreach (var column in gridModel.Columns.OrderBy(x => x.Value.Order))
-                column.Value.Order = columnIndex++;                
+                column.Value.Order = columnIndex++;
         }
 
         public static void MergeGridOptions<TModel>(this IGridModel<TModel> gridModel, IGridOptions options) where TModel : class
@@ -72,7 +72,7 @@
                 if (order == col.Value.Order)
                     columnOptions.Remove("co");
                 else
-                    col.Value.Order = order;
+                    col.Value.Order = order;                
 
                 var visible = columnOptions.ContainsKey("vc") && columnOptions["vc"] != null ? (Convert.ToBoolean(columnOptions["vc"])) : col.Value.IsVisible;
 
@@ -196,6 +196,7 @@
 
             //Чистим пустые опции
             var emptyColumnOptions = options.GColOpt.Where(x => !x.Value.Any()).Select(x => x.Key).ToList();
+
             foreach (var key in emptyColumnOptions)
                 options.GColOpt.Remove(key);
 

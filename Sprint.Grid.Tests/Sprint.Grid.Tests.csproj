@@ -35,7 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\LinqKit.1.0\lib\35\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,16 +61,27 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataSourceHelper.cs" />
+    <Compile Include="DynamicTests.cs" />
+    <Compile Include="GridQueryableExtensionsTest.cs" />
     <Compile Include="HelpersTests.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerGridModel.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GridModelHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sprint.Grid.csproj">
       <Project>{885e9bc7-f0f2-4f85-81e8-b86a1afb07bd}</Project>
       <Name>Sprint.Grid</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="customers.JSON">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

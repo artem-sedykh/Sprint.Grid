@@ -24,7 +24,7 @@
         private Func<object, object> _groupTitleRender;
         private Func<IEnumerable<TModel>, HtmlHelper, object> _summaryCellValueRender;
 
-        public GridColumn(Func<TModel, HtmlHelper, object> valueRender,int order)
+        public GridColumn(Func<TModel, HtmlHelper, object> valueRender, int order)
         {
             _valueRender = valueRender;
             Order = order;
@@ -107,7 +107,7 @@
             return this;
         }        
 
-        IGridColumnConfiguration<TModel> IGridColumnConfiguration<TModel>.GroupColumn<TProperty>(Expression<Func<TModel, TProperty>> property, int? groupOrder=null, Func<TProperty, object> groupTitleRender=null)
+        IGridColumnConfiguration<TModel> IGridColumnConfiguration<TModel>.GroupColumn<TProperty>(Expression<Func<TModel, TProperty>> property, int? groupOrder, Func<TProperty, object> groupTitleRender)
         {
             _groupKeyProperty = property;
             GroupSortDirection = System.Web.Helpers.SortDirection.Ascending;

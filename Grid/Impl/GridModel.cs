@@ -34,7 +34,7 @@
 
         public void Init(IGridOptions options)
         {
-            _options = options??new GridOptions();
+            _options = options ?? new GridOptions();
 
             this.MergeGridOptions(_options);
         }        

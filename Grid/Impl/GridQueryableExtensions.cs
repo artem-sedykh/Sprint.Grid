@@ -1,6 +1,6 @@
 ﻿namespace Sprint.Grid.Impl
 {
-    using Helpers;
+    using Dynamic;    
     using System.Collections.Generic;
     using System.Globalization;
     using System.Web.Helpers;
@@ -11,14 +11,15 @@
     using System.Web.Mvc;
 
     public static class GridQueryableExtensions
-    {
+    {        
         internal static IQueryable<IGroupingItem> GroupBy<TModel>(this IQueryable<TModel> source, IDictionary<LambdaExpression, SortDirection?> properties)
         {
             var groupFields = properties.Select(x => x.Key).ToArray();
             var directions = properties.Select(x => x.Value).ToArray();
             var length = groupFields.Length;
+           
+            var dynamicProperies = new List<DynamicProperty>();
 
-            var dynamicProperies = new Dictionary<string,Type>();
             var keyParameter = Expression.Parameter(source.ElementType, "key");
             var keyByDirection = new Dictionary<LambdaExpression, SortDirection?>();
             var memberBindings = new MemberBinding[length];
@@ -26,14 +27,15 @@
             for (var i = 0; i < length; i++)
             {
                 var key = String.Format("Key{0}", i);
-                dynamicProperies[key] = groupFields[i].ReturnType;
-            }            
+                dynamicProperies.Add(new DynamicProperty(key, groupFields[i].ReturnType));                
+            }
 
-            var keyType = Helpers.GetDynamicType(dynamicProperies);
+            var keyType = ClassFactory.Instance.GetDynamicClass(dynamicProperies);            
 
             var groupType = typeof (IGrouping<,>).MakeGenericType(keyType, typeof (TModel));
             var sortParameter = Expression.Parameter(groupType, "p");
-            var keyGroupProperty = Expression.Property(sortParameter, "Key");            
+            var keyGroupProperty = Expression.Property(sortParameter, "Key"); 
+           
             for (var i = 0; i < length; i++)
             {
                 var key = String.Format("Key{0}", i);
@@ -43,7 +45,7 @@
                 memberBindings[i] = Expression.Bind(keyType.GetMember(key)[0], pKey);
             }
             
-            var keySelector = Expression.Lambda(Expression.MemberInit(Expression.New(keyType), memberBindings), new[] { keyParameter }).Expand() as LambdaExpression;
+            var keySelector = Expression.Lambda(Expression.MemberInit(Expression.New(keyType), memberBindings), new[] { keyParameter }).Expand() as LambdaExpression;       
 
             var query = source.CallQueryableMethod("GroupBy", keySelector).Sort(keyByDirection) as IQueryable<IGrouping<object,TModel>>;
 
@@ -59,6 +61,7 @@
             var constant = Expression.Constant(value, property.ReturnType);
             var expression = Expression.Equal(currentProperty, constant);
             var lambda = Expression.Lambda<Func<TModel, bool>>(expression, parameter).Expand();
+
             return source.Where(lambda);
         }
 
@@ -112,8 +115,8 @@
                     new[] { source.ElementType, selector.Body.Type },
                     source.Expression,
                     Expression.Quote(selector)));
-
+            
             return query;
-        }
+        }       
     }    
 }

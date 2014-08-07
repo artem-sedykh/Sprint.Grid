@@ -11,9 +11,9 @@
     <AssemblyName>Sprint.Grid</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-	<NugetDir>$(DevEnvDir)..\Tools\nuget</NugetDir>
-	<nuspecDir>$(SolutionDir)nuget-package\SprintGridLib.nuspec</nuspecDir>
-	<OutputPackageDirectory>$(SolutionDir)nuget-package</OutputPackageDirectory>
+    <NugetDir>$(DevEnvDir)..\Tools\nuget</NugetDir>
+    <nuspecDir>$(SolutionDir)nuget-package\SprintGridLib.nuspec</nuspecDir>
+    <OutputPackageDirectory>$(SolutionDir)nuget-package</OutputPackageDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +45,10 @@
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dynamic\ClassFactory.cs" />
+    <Compile Include="Dynamic\DynamicClass.cs" />
+    <Compile Include="Dynamic\DynamicProperty.cs" />
+    <Compile Include="Dynamic\Signature.cs" />
     <Compile Include="Grid\IActionGridView.cs" />
     <Compile Include="Grid\IColumnBuilder.cs" />
     <Compile Include="Grid\IGridColumn.cs" />
@@ -96,9 +100,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent></PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
-    <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
     </GetAssemblyIdentity>
