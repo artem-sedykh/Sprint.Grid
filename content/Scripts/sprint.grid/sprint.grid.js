@@ -304,7 +304,7 @@
             var $groupHeader = $(this.groupHeaderSelector);
             var context = this;
             var containerSelector = '#' + context.gridKey;
-            if ($.sortable && $.draggable) {
+            if ($.fn.sortable && $.fn.draggable) {
                 $groupHeader.sortable({
                     items: context.groupIndicatorSelector,
                     appendTo: containerSelector,

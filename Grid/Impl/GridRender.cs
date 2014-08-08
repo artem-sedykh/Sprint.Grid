@@ -335,6 +335,17 @@
                     alternate = !alternate;
                 }
 
+                if(GridModel.ShowEmptyRows)
+                {
+                    if (GridModel.ShowEmptyRows)
+                    {
+                        for (var i = items.Length; i < GridModel.PageSize; i++)
+                        {
+                            RenderGroupTableRow(groupColumns, null, alternate, columnCount, groupOptions,empty:true);
+                            alternate = !alternate;
+                        }
+                    }
+                }
                 if (items.Length == 0)
                 {
                     Writer.Write("<tr>");
@@ -359,8 +370,17 @@
                 for (var i = 0; i < items.Length; i++)
                 {
                     var item = items[i];                    
-                    RenderTableRow(item, OrderedVisibleColumns,alternate);
+                    RenderTableRow(item, OrderedVisibleColumns, alternate);
                     alternate = !alternate;
+                }
+
+                if(GridModel.ShowEmptyRows)
+                {
+                    for (var i = items.Length; i < GridModel.PageSize; i++)
+                    {
+                        RenderTableRow(null, OrderedVisibleColumns, alternate, empty: true);
+                        alternate = !alternate;
+                    }
                 }
 
                 if (items.Length == 0)
@@ -380,9 +400,9 @@
             return paginateModel;
         }
 
-        public abstract void RenderGroupTableRow(KeyValuePair<string, IGridColumn<TModel>>[] groupColumns, IGroupingItem groupItem, bool alternate, int columnCount, IGridGroupOptions groupOptions);
+        public abstract void RenderGroupTableRow(KeyValuePair<string, IGridColumn<TModel>>[] groupColumns, IGroupingItem groupItem, bool alternate, int columnCount, IGridGroupOptions groupOptions,bool empty=false);
 
-        public abstract void RenderTableRow(TModel item, IEnumerable<KeyValuePair<string, IGridColumn<TModel>>> columns, bool alternate,int level=0);
+        public abstract void RenderTableRow(TModel item, IEnumerable<KeyValuePair<string, IGridColumn<TModel>>> columns, bool alternate,int level=0, bool empty=false);
 
         public abstract void RenderSummaryRow(TModel[] items, KeyValuePair<string, IGridColumn<TModel>>[] columns);
 

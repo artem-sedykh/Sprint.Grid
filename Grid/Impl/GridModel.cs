@@ -73,10 +73,11 @@
         public bool Multisort { get; set; }
 
         public int PageSize { get; set; }
+        public bool ShowEmptyRows { get; set; }
 
-        public int PageSizeInGroup { get; set; }
+        public bool ShowEmptyRowsInGroup { get; set; }
 
-        public int GroupPageSize { get; set; }
+        public int PageSizeInGroup { get; set; }        
 
         public int Page { get; set; }        
 

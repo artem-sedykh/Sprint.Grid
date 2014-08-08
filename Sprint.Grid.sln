@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprint.Grid", "Sprint.Grid.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprint.Grid.Tests", "Sprint.Grid.Tests\Sprint.Grid.Tests.csproj", "{6B0A2C3E-DA35-4787-BB04-3D36376F1792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprint.Grid.Examples", "Sprint.Grid.Examples\Sprint.Grid.Examples.csproj", "{47A7D1BC-897E-49C6-A667-8420336F3ED7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B0A2C3E-DA35-4787-BB04-3D36376F1792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A7D1BC-897E-49C6-A667-8420336F3ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A7D1BC-897E-49C6-A667-8420336F3ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A7D1BC-897E-49C6-A667-8420336F3ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A7D1BC-897E-49C6-A667-8420336F3ED7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

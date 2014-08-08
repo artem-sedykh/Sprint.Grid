@@ -38,6 +38,10 @@
 
         int PageSize { get; set; }
 
+        bool ShowEmptyRows { get; set; }
+
+        bool ShowEmptyRowsInGroup { get; set; }
+
         int PageSizeInGroup { get; set; }        
 
         int Page { get; set; }        

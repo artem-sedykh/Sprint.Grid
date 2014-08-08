@@ -76,7 +76,9 @@ namespace Sprint.Grid.Tests
 
             Assert.AreEqual(result.Count(),originalQuery.Count());
 
-            Assert.IsTrue(originalQuery.Count(c => result.Any(r => r.ID == c.ID)) == 0);
+            var count = originalQuery.Count(c => result.All(r => r.ID != c.ID));
+
+            Assert.IsTrue(count == 0);
         }
     }
 }

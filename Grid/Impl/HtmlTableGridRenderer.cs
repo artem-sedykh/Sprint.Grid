@@ -1,4 +1,6 @@
-﻿namespace Sprint.Grid.Impl
+﻿using System.Web.Routing;
+
+namespace Sprint.Grid.Impl
 {
     using System;
     using System.Collections.Generic;
@@ -113,7 +115,6 @@
             }
             else
             {
-                
                 Writer.Write("<div class=\"grid-status\">");
                 Writer.Write("<a class=\"grid-status-icon {0} {1} refresh\">Refresh</a>", statusLinkClass, cls);
                 Writer.Write("</div>");
@@ -151,28 +152,41 @@
             Writer.Write("</a>");
         }        
 
-        public override void RenderGroupTableRow(KeyValuePair<string, IGridColumn<TModel>>[] groupColumns, IGroupingItem groupItem, bool alternate, int columnCount, IGridGroupOptions groupOptions)
-        {                        
-            var groupKeys = HtmlHelper.AnonymousObjectToHtmlAttributes(groupItem.Key);
+        public override void RenderGroupTableRow(KeyValuePair<string, IGridColumn<TModel>>[] groupColumns, IGroupingItem groupItem, bool alternate, int columnCount, IGridGroupOptions groupOptions, bool empty=false)
+        {
+            var groupKeys = groupItem != null
+                ? HtmlHelper.AnonymousObjectToHtmlAttributes(groupItem.Key)
+                : new RouteValueDictionary();
 
             Writer.Write(alternate ? "<tr class=\"alternate\">" : "<tr>");
-            Writer.Write("<td class=\"hierarchy-cell\"><a class=\"grid-icon {0} plus lazy\"></a>", ExpandGroupClass);
+            if(empty)
+                Writer.Write("<td class=\"hierarchy-cell\">&nbsp;");
+            else
+                Writer.Write("<td class=\"hierarchy-cell\"><a class=\"grid-icon {0} plus lazy\"></a>", ExpandGroupClass);
             Writer.Write("</td>");
             Writer.Write("<td class=\"grid-group-row\" colspan=\"{0}\">", columnCount + 1);
 
-            for (var i = 0; i < groupColumns.Length; i++)
+            if(empty)
             {
-                var column = groupColumns[i];
-                var propertyName = String.Format("Key{0}", i);
-                var value = groupKeys[propertyName];
-                groupOptions.GroupKey[column.Key] = value != null ? value.ToString() : null;
-                var columnTitle = column.Value.Title;
-                if (column.Value.GroupTitleRender != null && value != null)
-                    value = column.Value.GroupTitleRender(value);
-                Writer.Write(GridModel.GridRenderOptions.GroupTitleTemplate, columnTitle, value ?? GridRenderOptions.EmptyGroupTitleText);
-            }                        
-            
-            Writer.Write(GridModel.GridRenderOptions.GroupCountTemplate, groupItem.Count);
+                Writer.Write("&nbsp;");
+            }
+            else
+            {
+                for (var i = 0; i < groupColumns.Length; i++)
+                {
+                    var column = groupColumns[i];
+                    var propertyName = String.Format("Key{0}", i);
+                    var value = groupKeys[propertyName];
+                    groupOptions.GroupKey[column.Key] = value != null ? value.ToString() : null;
+                    var columnTitle = column.Value.Title;
+                    if (column.Value.GroupTitleRender != null && value != null)
+                        value = column.Value.GroupTitleRender(value);
+                    Writer.Write(GridModel.GridRenderOptions.GroupTitleTemplate, columnTitle, value ?? GridRenderOptions.EmptyGroupTitleText);
+                }
+
+                Writer.Write(GridModel.GridRenderOptions.GroupCountTemplate, groupItem != null ? (int?)groupItem.Count : null);
+            }
+          
             Writer.Write("</td>");
             Writer.Write("</tr>");
 
@@ -206,10 +220,20 @@
             Writer.Write("</thead>");
             Writer.Write("<tbody>");
             var alternate = false;
+
             for (var i = 0; i < items.Length; i++)
             {
                 RenderTableRow(items[i], OrderedVisibleColumns, alternate);
                 alternate = !alternate;
+            }
+
+            if(GridModel.ShowEmptyRowsInGroup)
+            {
+                for (var i = items.Length; i < GridModel.PageSizeInGroup; i++)
+                {
+                    RenderTableRow(null, OrderedVisibleColumns, alternate, empty: true);
+                    alternate = !alternate;
+                }
             }
 
             if (items.Length == 0)
@@ -234,13 +258,14 @@
             Writer.Write("</div>");
         }
 
-        public override void RenderTableRow(TModel item, IEnumerable<KeyValuePair<string, IGridColumn<TModel>>> columns, bool alternate, int level = 0)
+        public override void RenderTableRow(TModel item, IEnumerable<KeyValuePair<string, IGridColumn<TModel>>> columns, bool alternate, int level = 0, bool empty=false)
         {            
             var tr = new TagBuilder("tr");
             var isHierarchy = GridModel.HierarchyUrl != null;
             
             var rowAttributes = GridModel.RowAttributes!=null?GridModel.RowAttributes(item,HtmlHelper):null;
             tr.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(rowAttributes));
+
             if (alternate)
                 tr.Attributes["class"] = tr.Attributes.ContainsKey("class")? String.Format("{0} {1}", tr.Attributes["class"], AlternateRowClass): AlternateRowClass;
 
@@ -255,7 +280,7 @@
             {
                 var td = new TagBuilder("td");
                 td.MergeAttributes(cols[i].Value.Attributes);
-                var value = GetCellValue(cols[i].Value, item);
+                var value = item != null ? GetCellValue(cols[i].Value, item) : null;
 
                 Writer.Write(td.ToString(TagRenderMode.StartTag));
                 if (i == 0)
@@ -265,6 +290,7 @@
                         padding.Append("&nbsp;");                    
                     Writer.Write(padding.ToString());
                 }
+                value = empty ? "&nbsp;" : value;
                 Writer.Write(value);
                 Writer.Write("</td>");                
             }            

@@ -26,7 +26,7 @@
                         EmptyText="Empty",
                         GroupTagTitle = "Grouping",                        
                         EmptyGroupTitleText="[Empty]",
-                        GroupTitleTemplate = "<b>{0}</b>:{1};",
+                        GroupTitleTemplate = "<span class=\"group-key\"><span class=\"group-column\">{0}</span>:{1};</span>",
                         GroupCountTemplate = "<b class=\"grid-group-count\">Count: {0}</b>"
                     };
             }

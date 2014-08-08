@@ -13,6 +13,7 @@
         static ClassFactory() { }  // Trigger lazy initialization of static fields
 
         readonly ModuleBuilder module;
+        //readonly ConcurrentDictionary<Signature, Type> classes;
         readonly Dictionary<Signature, Type> classes;
         int classCount;
         readonly ReaderWriterLock rwLock;
@@ -54,7 +55,8 @@
                 if (!classes.TryGetValue(signature, out type))
                 {
                     type = CreateDynamicClass(signature.Properties);
-                    classes.Add(signature, type);
+
+                    classes[signature] = type;
                 }
                 return type;
             }

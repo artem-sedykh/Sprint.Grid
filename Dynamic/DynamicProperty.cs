@@ -4,8 +4,8 @@
 
     public class DynamicProperty
     {
-        string name;
-        Type type;
+        readonly string name;
+        readonly Type type;
 
         public DynamicProperty(string name, Type type)
         {
