@@ -146,8 +146,11 @@ namespace Sprint.Grid.Impl
             }
 
             Writer.Write("<a class=\"grid-sort-link {4}\" data-key=\"{0}\" data-direction=\"{1}\" data-sortorder=\"{2}\">{3}", key, (int?)direction, sortOrder, column.Title, currentSortClass);            
+
             if(column.SortDirection!=null)
                 Writer.Write("<span class=\"{0}\"></span>",column.SortDirection==SortDirection.Ascending?"asc-sort":"desc-sort");
+            else
+                Writer.Write("<span class=\"sort-none\"></span>");
 
             Writer.Write("</a>");
         }        

@@ -447,13 +447,6 @@ a.grid-pager-button:hover{
     float: right;
     margin-right: 5px;
 }
-.grid-group-count {
-    /*float: right;*/
-    /*position: absolute;*/
-    /*right: 10px;*/
-    /*margin-right: 10px;*/
-    /*display: block;*/
-}
 .group-key {
     float: left;
 }
@@ -462,4 +455,15 @@ a.grid-pager-button:hover{
 }
 .sp-clear {
     clear: both;
+}
+.sort-none {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -3333px;
+    text-align: center;
+    vertical-align: middle;
 }
