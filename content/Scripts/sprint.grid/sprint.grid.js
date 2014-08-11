@@ -472,11 +472,15 @@
 
         //#region client functions
 
-        client_refresh: function () {
+        client_refresh: function (success, complete) {
+            this.refresh(undefined, success, complete);
+        },
 
-            this.refresh();
-
+        client_reset: function () {
+            this.refresh({});
         }
+
+        //TODO:add more client functions
 
         //#endregion
 
@@ -506,6 +510,8 @@
             }
         };
 
+        var args = Array.prototype.slice.call(arguments, 1);
+
         return this.each(function () {
 
             var $this, data, options, $body;
@@ -523,7 +529,7 @@
             }
 
             if (typeof option === 'string') {
-                data['client_' + option]();
+                data['client_' + option].apply(data, args);
             }
         });
     };
