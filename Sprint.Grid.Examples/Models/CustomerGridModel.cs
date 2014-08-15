@@ -1,11 +1,12 @@
-﻿using Sprint.Grid.Impl;
+﻿using Microsoft.Ajax.Utilities;
+using Sprint.Grid.Impl;
 
 namespace Sprint.Grid.Examples.Models
 {
     public class CustomerGridModel:GridModel<Customer>
     {
         public CustomerGridModel(string gridKey) : base(gridKey)
-        {
+        {            
             Columns.For(c => c.Name, "Name")
                 .Title("Name")
                 .SortColumn(c => c.Name, System.Web.Helpers.SortDirection.Ascending)
@@ -50,6 +51,8 @@ namespace Sprint.Grid.Examples.Models
             PageSize = 10;
 
             PageSizeInGroup = 5;
+
+            HierarchyUrl = (customer, url) => url.Action("OrderGrid", "Home", new { customerId = customer.ID });
         }
     }
 }

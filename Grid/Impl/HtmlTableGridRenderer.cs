@@ -274,8 +274,13 @@ namespace Sprint.Grid.Impl
 
             Writer.Write(tr.ToString(TagRenderMode.StartTag));
 
-            if (isHierarchy)
-                Writer.Write("<td class=\"hierarchy-cell\"><a href=\"{0}\" class=\"grid-icon {1} plus\"></a></td>", GridModel.HierarchyUrl(item, UrlHelper), GridHierarchyLinkClass);
+            if(isHierarchy)
+            {
+                if(empty)
+                    Writer.Write("<td class=\"hierarchy-cell\"></td>");
+                else
+                    Writer.Write("<td class=\"hierarchy-cell\"><a href=\"{0}\" class=\"grid-icon {1} plus\"></a></td>", GridModel.HierarchyUrl(item, UrlHelper), GridHierarchyLinkClass);
+            }                
 
             var cols = columns as KeyValuePair<string, IGridColumn<TModel>>[] ?? columns.ToArray();
 

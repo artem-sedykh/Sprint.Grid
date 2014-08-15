@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Sprint.Grid.Examples.Models;
 using Sprint.Grid.Examples.Services;
 using Sprint.Grid.Impl;
+using Sprint.Grid.Examples.Helpers;
 
 namespace Sprint.Grid.Examples.Controllers
 {
@@ -70,11 +72,22 @@ namespace Sprint.Grid.Examples.Controllers
 
             model.ShowEmptyRowsInGroup = true;
 
-            model.PageSizeInGroup = 5;            
+            model.PageSizeInGroup = 5;
 
-            var query = customerService.GetAll();            
+            model.HierarchyUrl = (customer, url) => url.Action("OrderGrid", "Home", new { customerId = customer.ID });
 
-            return View(new ActionGridView<Customer>(model, query).Init(options));            
+            var query = customerService.GetAll();
+
+            return View(new ActionGridView<Customer>(model.Localize(), query).Init(options));
+        }
+
+        public ActionResult OrderGrid(int? customerId, GridOptions options)
+        {
+            var model = new OrderGridModel("order"+customerId);
+
+            var query = customerService.GetAll().First(x=>x.ID==customerId).Order.AsQueryable();
+
+            return View(new ActionGridView<Order>(model.Localize(), query).Init(options));
         }
 
     }

@@ -240,15 +240,6 @@
     background-color: #f3f7fc; 
 }
 
-.hierarchy-cell {
-    width: 18px;    
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.hierarchy-cell-right {
-    padding-left: 5px;
-    padding-right: 5px;
-}
 .grid-group-table {        
     border-bottom: none;
     margin-right: 10px;
@@ -466,4 +457,13 @@ a.grid-pager-button:hover{
     text-indent: -3333px;
     text-align: center;
     vertical-align: middle;
+}
+.grid-hierarchy-row {
+    padding-right: 5px !important; 
+}
+
+.hierarchy-cell {
+    width: 18px;    
+    padding-left: 5px!important;
+    padding-right: 5px!important;
 }

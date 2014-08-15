@@ -9,7 +9,15 @@
 
 
 $(document).ready(function () {
-    $('.sprint-grid').sprintgrid();
+    $('#customer').sprintgrid({
+        expandHierarchySuccess: function ($container) {
+            var $orderGrid = $container.find('.sprint-grid');
+
+            $orderGrid.sprintgrid();
+
+            console.log($orderGrid);
+        }
+    });
 
     $('body').on('click', '.js-refresh-customer', function () {
         $('#customer').sprintgrid('refresh', function(data) {
