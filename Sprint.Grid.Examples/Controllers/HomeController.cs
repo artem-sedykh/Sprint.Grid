@@ -74,21 +74,21 @@ namespace Sprint.Grid.Examples.Controllers
 
             model.PageSizeInGroup = 5;
 
-            model.HierarchyUrl = (customer, url) => url.Action("OrderGrid", "Home", new { customerId = customer.ID });
+           // model.HierarchyUrl = (customer, url) => url.Action("OrderGrid", "Home", new { customerId = customer.ID });
 
             var query = customerService.GetAll();
 
             return View(new ActionGridView<Customer>(model.Localize(), query).Init(options));
         }
 
-        public ActionResult OrderGrid(int? customerId, GridOptions options)
-        {
-            var model = new OrderGridModel("order"+customerId);
+        //public ActionResult OrderGrid(int? customerId, GridOptions options)
+        //{
+        //    var model = new OrderGridModel("order"+customerId);
 
-            var query = customerService.GetAll().First(x=>x.ID==customerId).Order.AsQueryable();
+        //    var query = customerService.GetAll().First(x=>x.ID==customerId).Order.AsQueryable();
 
-            return View(new ActionGridView<Order>(model.Localize(), query).Init(options));
-        }
+        //    return View(new ActionGridView<Order>(model.Localize(), query).Init(options));
+        //}
 
     }
 }
