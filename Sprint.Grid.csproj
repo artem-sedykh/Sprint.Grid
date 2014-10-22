@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\LinqKit.1.0\lib\35\LinqKit.dll</HintPath>
+    <Reference Include="Sprint.Linq">
+      <HintPath>packages\Sprint.Linq.1.0.0.0\lib\net40-full\Sprint.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

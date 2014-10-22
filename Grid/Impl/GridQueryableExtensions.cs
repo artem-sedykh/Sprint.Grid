@@ -1,10 +1,11 @@
-﻿namespace Sprint.Grid.Impl
+﻿using Sprint.Linq;
+
+namespace Sprint.Grid.Impl
 {
     using Dynamic;    
     using System.Collections.Generic;
     using System.Globalization;
     using System.Web.Helpers;
-    using LinqKit;
     using System;
     using System.Linq;    
     using System.Linq.Expressions;
