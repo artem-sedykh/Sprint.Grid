@@ -248,7 +248,7 @@ namespace Sprint.Grid.Impl
             }
             else
             {
-                RenderSummaryRow(items, OrderedVisibleColumns.ToArray());
+                RenderSummaryRow(items, OrderedVisibleColumns.ToArray());                
             }
 
             Writer.Write("</tbody>");

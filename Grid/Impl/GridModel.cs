@@ -90,6 +90,7 @@
         public Func<TModel,HtmlHelper, object> RowAttributes { get; set; }
 
         public Func<TModel, IEnumerable<TModel>> ChildSelector { get; set; }
+        public virtual void PrepareSource(IEnumerable<TModel> source){}
 
         public int SeparatorLevelLength { get; set; }
     }

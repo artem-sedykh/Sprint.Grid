@@ -53,6 +53,8 @@
 
         Func<TModel,HtmlHelper, object> RowAttributes { get; set; }
 
-        Func<TModel, IEnumerable<TModel>> ChildSelector { get; set; }        
+        Func<TModel, IEnumerable<TModel>> ChildSelector { get; set; }
+
+        void PrepareSource(IEnumerable<TModel> source);
     }
 }

@@ -174,7 +174,8 @@
                     page = 1;
                 var numberToSkip = (page - 1) * GridModel.PageSizeInGroup;
                 var items = query.Skip(numberToSkip).Take(GridModel.PageSizeInGroup).ToArray();
-              
+                GridModel.PrepareSource(items);
+
                 var paginationModel = new PagedListModel(page, GridModel.PageSizeInGroup, queryCount);
 
                 RenderGroupTable(items, groupOptions, paginationModel);
@@ -363,7 +364,8 @@
 
                 var numberToSkip = (page - 1) * GridModel.PageSize;
                 var items = query.Skip(numberToSkip).Take(GridModel.PageSize).ToArray();
-                
+                GridModel.PrepareSource(items);
+
                 paginateModel = new PagedListModel(page, GridModel.PageSize, queryCount);
                 var alternate = false;
 
@@ -404,7 +406,7 @@
 
         public abstract void RenderTableRow(TModel item, IEnumerable<KeyValuePair<string, IGridColumn<TModel>>> columns, bool alternate,int level=0, bool empty=false);
 
-        public abstract void RenderSummaryRow(TModel[] items, KeyValuePair<string, IGridColumn<TModel>>[] columns);
+        public abstract void RenderSummaryRow(TModel[] items, KeyValuePair<string, IGridColumn<TModel>>[] columns);        
 
         public abstract void RenderColumnHeader(IGridColumn<TModel> column, string key, int nextSortOrder, bool isGroupTableHeader);
 
